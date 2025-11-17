@@ -1,13 +1,17 @@
+import react , {useState} from 'react'
+
 function list() {
 
     let items = ["New York", "Delhi", "Bangalore", "Chennai", "Kolkata"];
+    const [city,setCity] = useState(items[0])
+    const handleCity = ()=>{
+        setCity(items[Math.floor(Math.random()*items.length)])
+    }
     return (
         <>
-            {items.length === 0 && <li className="list-group-item">No items found</li>}
-            <h1>Hello React</h1>
-            <ul className="list-group">
-                {items.map((item,index) => <li key={item} className="list-group-item" onClick={()=>console.log(item,index)}>{item}</li>)}
-            </ul>
+            <h1 >Hello React</h1>
+            <h2>Hello {city}</h2>
+            <button className='btn btn-primary' onClick={handleCity}>Change City</button>
         </>
     )
 }
